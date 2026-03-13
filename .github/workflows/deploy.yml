@@ -1,0 +1,25 @@
+name: Auto Deploy Website
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show runner info
+        run: |
+          echo "GitHub Runner Working"
+          hostname
+          pwd
+
+      - name: Deploy website
+        run: |
+          echo "Deploying website..."
+          sudo cp -r * /var/www/aavisantech-group.com/public_html/
